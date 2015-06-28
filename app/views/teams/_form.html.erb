@@ -24,9 +24,10 @@
     <%= f.file_field :team_picture %>
   </div>
   <div class="field">
-    <%= f.label :comp_id %><br>
-    <%= f.number_field :comp_id %>
+    <%= f.label "Competition" %><br>
+    <%= f.select :comp_id, options_for_select(@competitions.collect{ |u| [u.name, u.id] }) %>
   </div>
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -10,15 +10,19 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @team = Team.find(params[:id])
+    @players = Player.where(team_id: @team.id)
   end
 
   # GET /teams/new
   def new
+    @competitions =Competition.all
     @team = Team.new
   end
 
   # GET /teams/1/edit
   def edit
+    @competitions = Competition.all
   end
 
   # POST /teams

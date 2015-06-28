@@ -12,13 +12,21 @@
 
 <p>
   <strong>Team picture:</strong>
-  <%= @team.team_picture %>
+  <%= image_tag(@team.team_picture_url, :width => 200) if @team.team_picture.present? %>
 </p>
 
 <p>
-  <strong>Comp:</strong>
-  <%= @team.comp_id %>
+  <strong>Competition:</strong>
+  <%= link_to Competition.find_by(id: @team.comp_id).name, competition_path(@team.comp_id)%>
 </p>
-
+<p>
+	<strong>Players</strong><br>
+	
+	<%@players.each do |p|%>
+	<tr>
+	<td><%=link_to p.name, player_path(p.id)%></td><br>
+	<%end%>
+	</tr>
+</p>
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>
