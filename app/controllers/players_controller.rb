@@ -14,11 +14,13 @@ class PlayersController < ApplicationController
 
   # GET /players/new
   def new
+    @teams = Team.all
     @player = Player.new
   end
 
   # GET /players/1/edit
   def edit
+    @teams = Team.all
   end
 
   # POST /players
