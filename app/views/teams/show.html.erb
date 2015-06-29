@@ -12,7 +12,7 @@
 
 <p>
   <strong>Team picture:</strong>
-  <%= image_tag(@team.team_picture_url, :width => 200) if @team.team_picture.present? %>
+  <%= image_tag(@team.team_picture_url, :width => 100) if @team.team_picture.present? %>
 </p>
 
 <p>
@@ -21,12 +21,19 @@
 </p>
 <p>
 	<strong>Players</strong><br>
-	
-	<%@players.each do |p|%>
+	<% @players.in_groups_of(3) do |group| %>
+  <div class="row">
+    <% group.compact.each do |p| %>
+      <div class="col-md-2">
+        <br><br>
 	<tr>
+  <td><%= link_to( image_tag(p.picture_url, :width => 100, :height => 100), player_path(p), :class=>"work") if p.picture.present?%></td><br>
 	<td><%=link_to p.name, player_path(p.id)%></td><br>
-	<%end%>
 	</tr>
+  </div>
+  <%end%>
+  </div>
+  <%end%>
 </p>
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>

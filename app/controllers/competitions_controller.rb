@@ -10,6 +10,8 @@ class CompetitionsController < ApplicationController
   # GET /competitions/1
   # GET /competitions/1.json
   def show
+    @competition = Competition.find(params[:id])
+    @teams = Team.where(comp_id: @competition.id)
   end
 
   # GET /competitions/new
