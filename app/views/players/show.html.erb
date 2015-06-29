@@ -4,20 +4,13 @@
   <strong>Name:</strong>
   <%= @player.name %>
 </p>
-
+<p>
+  <strong>Picture:</strong>
+  <%= image_tag(@player.picture_url, :width => 150) if @player.picture.present? %>
+</p>
 <p>
   <strong>Description:</strong>
   <%= @player.description %>
-</p>
-
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag(@player.picture_url, :width => 200) if @player.picture.present? %>
-</p>
-
-<p>
-  <strong>Team:</strong>
-  <%= @player.team_id %>
 </p>
 
 <%= link_to 'Edit', edit_player_path(@player) %> |
