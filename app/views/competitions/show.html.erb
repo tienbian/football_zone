@@ -14,15 +14,35 @@
   <strong>Country:</strong>
   <%= @competition.country %>
 </p>
+<h2>League Table</h2>
+<table style="width:30%" class="table table-striped">
+  
+  <tr>
+    <th>Team</th>
+    <th>Win</th>
+    <th>Lose</th> 
+    <th>Tie</th>
+    <th>Point</th>
+  </tr>
+  <%@teams.each do |team|%>
+  <tr>
+    <td><%=image_tag(team.team_picture_url, :width => 20)%> <%=link_to team.name, team%></td>
+    <td><%=team.wins%></td>
+    <td><%=team.losses%></td> 
+    <td><%=team.ties%></td>
+    <td><%=team.wins*3+team.ties%>
+  </tr>
+  <%end%>
+</table>
 <p>
 	<strong>Teams of league</strong><br>
 	<% @teams.in_groups_of(3) do |group| %>
   <div class="row">
     <% group.compact.each do |p| %>
-      <div class="col-md-2">
+      <div class="col-md-1">
         <br><br>
 	<tr>
-  <td><%=link_to link_to( image_tag(p.team_picture_url, :width => 100, :height => 100), team_path(p), :class=>"work") if p.team_picture.present?%></td><br>
+  <td><%=link_to link_to( image_tag(p.team_picture_url, :width => 70, :height => 70), team_path(p), :class=>"work") if p.team_picture.present?%></td><br>
 	<td><%=link_to p.name, team_path(p.id)%></td><br>
 	</tr>
   </div>

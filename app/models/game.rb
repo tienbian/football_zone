@@ -12,7 +12,7 @@ class Game < ActiveRecord::Base
     elsif winner == team
       return 'W'
     else 
-      return 'L'
+      return 'L' 
      end
   end
 end
