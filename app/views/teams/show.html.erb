@@ -16,6 +16,23 @@
 </p>
 
 <p>
+  <strong>Team table:</strong>
+  <table style="width:30%"class="table table-bordered">
+  <tr>
+    <th>Win</th>
+    <th>Lose</th> 
+    <th>Tie</th>
+    <th>Point</th>
+  </tr>
+  <tr>
+    <td><%=@team.wins%></td>
+    <td><%=@team.losses%></td> 
+    <td><%=@team.ties%></td>
+    <td><%=@team.wins*3+@team.ties%>
+  </tr>
+</table>
+</p>
+<p>
   <strong>Competition:</strong>
   <%= link_to Competition.find_by(id: @team.comp_id).name, competition_path(@team.comp_id)%>
 </p>

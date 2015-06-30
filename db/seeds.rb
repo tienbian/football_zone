@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
     competitions = Competition.create(
       
-        name: 'Premier League',
-        description: "Sponsor Name Barclays Year Founded 1992",
+        name: 'Premier League 2015-2016',
+        description: "Sponsor : Barclays | FoundedYear  1992",
         country: 'England'
       
       )
@@ -409,7 +409,7 @@
         Weight (kg) 91
         Position  GK
         Preferred Foot  Left',
-        team_id: '5'
+        team_id: '1'
       },
       {
         name: 'Jamal Blackman',
