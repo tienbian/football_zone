@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :categories
-  resources :posts
+  resources :posts do 
+    resources :comments
+  end
   resources :games
   resources :competitions
   resources :teams
@@ -27,7 +29,7 @@ Rails.application.routes.draw do
   #   resources :products do
   #     member do
   #       get 'short'
-  #       post 'toggle'
+  #       post 'toggle' 
   #     end
   #
   #     collection do

@@ -20,9 +20,35 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @post.user_id %>
+  <strong>Author:</strong>
+  <%= User.find_by(id: @post.user_id).email %>
 </p>
+
+<h3>Comments</h3>
+<% @comments.each do |comment| %>
+  <div>
+    <strong><%= User.find_by(id: comment.user_id).email %></strong>
+    <br />
+    <%= comment.body %>
+    <br>
+    <%= link_to 'Remove', [@post,comment], method: :delete, data: { confirm: 'Are you sure?' }%>
+    <br>
+  </div>
+  <br>
+<% end %>
+
+<% if current_user.present?%>
+ <h2>Add a comment:</h2>
+  <%= form_for ([@post, @comment]) do |f| %>
+    <p>
+      <%= f.label :comment%><br>
+      <%= f.text_area :body %>
+    </p>   
+    <p><%= f.submit %></p>
+  <% end %>
+<% else%>
+  <p><%= link_to "Please sign in to comment!", new_user_session_path%><p>
+<% end%>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
