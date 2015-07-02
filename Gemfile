@@ -43,6 +43,7 @@ group :development, :test do
   gem 'spring'
  gem'carrierwave'
 gem 'bootstrap-sass'
+gem 'devise'
 
 end
 
