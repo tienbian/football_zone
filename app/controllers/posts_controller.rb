@@ -15,10 +15,14 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @all_category = Category.all
+    @category_post = @post.category_posts.build
   end
 
   # GET /posts/1/edit
   def edit
+    @all_category = Category.all
+    @category_post = @post.category_posts.build
   end
 
   # POST /posts
@@ -28,6 +32,11 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        params[:category][:id].each do |fa|
+          unless fa.blank? or fa.nil?
+          CategoryPost.create(category_id: fa, post_id: @post.id)
+          end
+        end
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
@@ -40,8 +49,15 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    @post = Post.find(params[:id])
+    CategoryPost.where(post_id: @post.id).destroy_all
     respond_to do |format|
       if @post.update(post_params)
+        params[:category][:id].each do |fa|
+          unless fa.blank? or fa.nil?
+          CategoryPost.create(category_id: fa, post_id: @post.id)
+          end
+        end
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
@@ -55,6 +71,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post.destroy
+    CategoryPost.where(post_id: @post.id).destroy_all
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
