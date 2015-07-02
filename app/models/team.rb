@@ -13,12 +13,15 @@ class Team < ActiveRecord::Base
   end
   
   def losses
-    games_played.select{|game| game.winner!= self.name && game.winner!='tie'}.count
+    games_played.select{|game| game.winner!= self.name && game.winner!='tie'&&game.winner!='not_kick_off'}.count
   end
 
   def ties
     games_played.select{|game| game.winner == 'tie'}.count
   end
-
+ 
+  def not_kick_off
+    games_played.select{|game| game.winner == 'not_kick_off'}.count
+  end
   
 end
