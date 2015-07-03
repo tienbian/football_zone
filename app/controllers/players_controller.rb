@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
-  before_action :set_player, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+  # before_action :set_player, only: [:show, :edit, :update, :destroy]
 
   # GET /players
   # GET /players.json
@@ -15,7 +16,7 @@ class PlayersController < ApplicationController
   # GET /players/new
   def new
     @teams = Team.all
-    @player = Player.new
+    # @player = Player.new
   end
 
   # GET /players/1/edit
@@ -26,7 +27,7 @@ class PlayersController < ApplicationController
   # POST /players
   # POST /players.json
   def create
-    @player = Player.new(player_params)
+    # @player = Player.new(player_params)
 
     respond_to do |format|
       if @player.save
@@ -65,9 +66,9 @@ class PlayersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_player
-      @player = Player.find(params[:id])
-    end
+    # def set_player
+    #   @player = Player.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params

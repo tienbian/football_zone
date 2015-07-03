@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :destroy]
+ load_and_authorize_resource
 
   # GET /teams
   # GET /teams.json
@@ -17,9 +17,8 @@ class TeamsController < ApplicationController
   # GET /teams/new
   def new
     @competitions =Competition.all
-    @team = Team.new
+    
   end
-
   # GET /teams/1/edit
   def edit
     @competitions = Competition.all
@@ -28,7 +27,6 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
-    @team = Team.new(team_params)
 
     respond_to do |format|
       if @team.save
@@ -67,9 +65,6 @@ class TeamsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_team
-      @team = Team.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params

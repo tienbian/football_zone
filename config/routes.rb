@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  resources :roles
+  #manage user
   devise_for :users
+  scope "/admin" do
+  resources :users
+  end
   resources :categories
   resources :posts do 
     resources :comments
