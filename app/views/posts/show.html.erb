@@ -10,8 +10,8 @@
 </p>
 
 <p>
-  <strong>Text:</strong>
-  <%= @post.text %>
+ 
+  <td><%=image_tag(@post.post_picture_url, :width => 150) if @post.post_picture.present? %></td>
 </p>
 
 <p>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150702165022) do
+ActiveRecord::Schema.define(version: 20150703152046) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -62,13 +62,13 @@ ActiveRecord::Schema.define(version: 20150702165022) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.string   "description", limit: 255
-    t.string   "text",        limit: 255
-    t.text     "body",        limit: 65535
-    t.integer  "user_id",     limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "title",        limit: 255
+    t.string   "description",  limit: 255
+    t.text     "body",         limit: 65535
+    t.integer  "user_id",      limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "post_picture", limit: 255
   end
 
   create_table "roles", force: :cascade do |t|
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20150702165022) do
     t.string   "name",                   limit: 255, default: "", null: false
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.integer  "role_id",                limit: 4,   default: 2,  null: false
+    t.integer  "role_id",                limit: 4
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
