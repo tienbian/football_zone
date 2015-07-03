@@ -44,6 +44,7 @@ group :development, :test do
  gem'carrierwave'
 gem 'bootstrap-sass'
 gem 'devise'
-
+gem 'cancan'
+gem 'cancancan'
 end
 

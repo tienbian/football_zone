@@ -1,5 +1,5 @@
 class CompetitionsController < ApplicationController
-  before_action :set_competition, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /competitions
   # GET /competitions.json
@@ -16,9 +16,7 @@ class CompetitionsController < ApplicationController
 
   # GET /competitions/new
   def new
-    @competition = Competition.new
   end
-
   # GET /competitions/1/edit
   def edit
   end
@@ -26,8 +24,7 @@ class CompetitionsController < ApplicationController
   # POST /competitions
   # POST /competitions.json
   def create
-    @competition = Competition.new(competition_params)
-
+    
     respond_to do |format|
       if @competition.save
         format.html { redirect_to @competition, notice: 'Competition was successfully created.' }
@@ -65,10 +62,6 @@ class CompetitionsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_competition
-      @competition = Competition.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def competition_params
       params.require(:competition).permit(:name, :description, :country)
