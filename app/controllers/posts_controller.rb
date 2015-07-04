@@ -4,14 +4,24 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-  if params[:format].nil? 
+  # if params[:format].nil? 
+  #   @posts = Post.all
+  #   else
+  #   @category =Category.includes(:posts).find_by_id(params[:format])
+  #   @posts =@category.posts
+  if params[:format].nil?&&params[:search].blank?
     @posts = Post.all
-    else
+  elsif params[:search].blank?
     @category =Category.includes(:posts).find_by_id(params[:format])
-    @posts =@category.posts
+    @posts = @category.posts
+  else
+     @posts =Post.where("body LIKE '%#{params[:search]}%'")
 
   end
   end
+
+  # end
+  
 
   # GET /posts/1
   # GET /posts/1.json
@@ -23,7 +33,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-   
+   @post = Post.new
     @all_category = Category.all
     @category_post = @post.category_posts.build
   end

@@ -6,8 +6,7 @@
  </p>
  <br>
 
-<div id="articles">
-<% for article in @posts %>
+<%  @posts.each do |article| %>
   <h2>
     <%= link_to h(article.title), article %>
   </h2>
