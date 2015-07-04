@@ -12,6 +12,165 @@
         country: 'England'
       
       )
+
+
+posts = Post.create([
+  {
+          title: 'Falcao CHÍNH THỨC về Chelsea!',
+        post_picture: File.open(File.join(Rails.root.join('app/assets/images/seed/postdata'), 'pos1.png')),
+        description:'Sau nhiều thông tin đồn đoán, Radamel Falcao đã chính thức gia nhập Chelsea theo dạng cho mượn 1 mùa giải từ Monaco.',
+        body: 'Cách đây ít phút, Chelsea thông báo họ đã chính thức mượn thành công Falcao từ Monaco kèm theo điều khoản mua đứt vào cuối mùa giải tới.
+Tiền đạo 29 tuổi người Colombia từng thi đấu cho Man Utd theo dạng cho mượn ở mùa giải trước, ghi được 4 bàn sau 29 trận đấu.
+
+Đến Chelsea, anh sẽ hội ngộ cùng các đồng đội cũ ở Atletico Madrid là Thibaut Courtois, Filipe Luis và Diego Costa.
+
+Tiền vệ 20 tuổi người Croatia, Mario Pasalic sẽ di chuyển theo hướng ngược lại như một phần trong thỏa thuận giữa Chelsea và Monaco.
+
+Phát biểu trên trang chủ của Chelsea, Falcao cho biết: “Tôi rất hạnh phúc khi được gia nhập Chelsea và không thể chờ đợi thêm để bắt đầu tập luyện với họ. Tôi muốn giúp họ giành chức vô địch Premier League và đạt được thành công tại châu Âu.”
+
+Chi tiết bản hợp đồng giữa Falcao và Chelsea không được tiết lộ. ',
+         user_id: '1'
+       },
+       {
+          title: '“NHM Atletico sẽ không tha thứ cho De Gea”!',
+        post_picture: File.open(File.join(Rails.root.join('app/assets/images/seed/postdata'), 'post2.jpg')),
+        description:'Cựu trung vệ Tomas Ujfalusi cho rằng NHM Atletico Madrid sẽ không tha thứ cho De Gea nếu như thủ môn này gia nhập Real.
+Thủ thành De Gea gần như chắc chắn sẽ rời Man Utd vào mùa Hè này để chuyển tới đầu quân cho Real. Thương vụ này gần như đã hoàn tất và hiện chỉ còn chờ Real chốt giá.',
+        body: 'Chứng kiến người đồng đội cũ sắp gia nhập đối thủ cùng thành phố với Atletico, cựu trung vệ Tomas Ujfalusi đã lên tiếng khuyên bảo De Gea nên suy nghĩ lại.
+
+Theo Tomas Ujfalusi, việc De Gea gia nhập Real sẽ khiến NHM Atletico Madrid tức giận. 
+
+"Chắc chắn một điều rằng NHM Atletico sẽ không tha thứ cho De Gea, nếu anh ấy gia nhập Real. Đúng là thật khó cho De Gea để đưa ra quyết định của mình", Tomas Ujfalusi nói. 
+
+"Việc De Gea sang Real cũng là một bất ngờ lớn đối với tôi vì anh ấy là fan của Atletico từ khi còn nhỏ. Trái tim của De Gea luôn hướng về Atletico".
+
+Như đã biết, tại Madrid, Atletico và Real là hai đối thủ không đội trời chung. Ở Madrid, trong khi CĐV của Real thường thuộc tầng lớp trung lưu, thì CĐV của Atletico lại nhiều dân lao động.
+
+Trong quá khứ, Atletico chưa bao giờ là đối thủ của Real. Tuy vậy, những mùa bóng gần đây nhờ những bản hợp đồng chất lượng khoảng cách về mặt chuyên môn giữa Atletico và Real đã được thu hẹp đáng kể. 
+
+Bằng chứng là ở La Liga mùa giải vừa qua Real đã hai lần "phơi áo" trước Atletico. ',
+         user_id: '1'
+       },
+       {
+          title: 'Gerrard ra mắt LA Galaxy như ngôi sao điện ảnh!',
+        post_picture: File.open(File.join(Rails.root.join('app/assets/images/seed/postdata'), 'post3.jpg')),
+        description:'Cựu thủ quân của Liverpool đã có màn ra mắt LA Galaxy, bắt đầu một chương mới trong sự nghiệp sân cỏ của mình.
+Do đã bước sang tuổi 35, Steven Gerrard đã quyết định chia tay Liverpool, chuyển sang LA Galaxy thi đấu từ cuối mùa giải trước. Tuy vậy, tới ngày hôm qua, tiền vệ kì cựu người Anh mới chính thức ra mắt CLB mới.',
+        body: 'Điều đặc biệt là Gerrard đã có màn ra mắt LA Galaxy khá hoành tráng trên nền biểu tượng của Hollywood. Cảnh tượng này khiến người ta có cảm giác rằng Gerrard giống 1 ngôi sao điện ảnh mới kí hợp đồng với Hollywood. Tại đây, tiền vệ người Anh đã được khoác trên mình chiếc áo số 8 vốn đã gắn liền với tên tuổi và hình ảnh của anh.
+LA Galaxy tỏ ra khá hào hứng với thương vụ này. Chẳng bởi thế mà sau khi ra mắt Steven Gerrard, đội bóng Mỹ đã đăng tải bức ảnh của tiền vệ người Anh kèm theo dòng chữ nổi bật “Chào mừng tới Los Angeles, Steven Gerrard!”.
+Theo kế hoạch, Steven Gerrard sẽ có màn ra mắt CĐV LA Galaxy ở giữa trận đấu với Toronto vào hom nay. Do kì chuyển nhượng mùa Hè quốc tế chưa mở cửa nên Gerrard chưa thể đá cho LA Galaxy ở trận đấu này. Thay vào đó, cựu thủ quân Liverpool sẽ phải chờ tới ngày 17/6 để ra sân gặp San Jose Earthquakes.
+“Tôi đã có nhiều cơ hội được tiếp tục gắn bó với châu Âu. Nhưng tôi muốn tìm kiếm 1 thử thách tươi mới, xa nhà và tới 1 nơi mà tôi và gia đình có thể tận hưởng. Tôi đã và đang luyện tập chăm chỉ để đảm bảo thể lực ra sân và tiếp tục thi đấu cho LA Galaxy. Tôi đã sẵn sàng”, Gerrard chia sẻ.
+Trước đây, từng có 1 cầu thủ Anh tới LA Galaxy thi đấu và tạo được sức hút lớn, đó là David Beckham. Gerrard được kì vọng sẽ tiếp tục mang âm hưởng bóng đá Anh tới xứ sở cờ hoa và thi đấu thành công như cựu tiền vệ Man Utd. ',
+         user_id: '1'
+       },
+       {
+          title: 'Nằng nặc đòi ra đi, sao Chelsea bị dọa kiện!',
+        post_picture: File.open(File.join(Rails.root.join('app/assets/images/seed/postdata'), 'post4.jpg')),
+        description: 'CLB Fiorentina đang tính kiện Mohamed Salah – cầu thủ thuộc biên chế Chelsea vì tự ý làm trái hợp đồng.
+Số là trong bản hợp đồng cho mượn đã ký trước đó với phía Chelsea, Fiorentina được quyền mượn Mohamed Salah thêm ít nhất một mùa giải nữa cùng điều khoản mua đứt vào cuối mùa 2015/16.',
+        body:'Tuy vậy, trong một diễn biến mới nhất cầu thủ có biệt danh “Messi Ai Cập” đã nhất quyết không chịu ký tiếp vào bản hợp đồng gia hạn để tìm một bến đỗ mới.
+
+Mohamed Salah phản ứng tiêu cực đến nỗi bỏ luôn cả việc tập trung cùng đồng đội nhằm chuẩn bị cho mùa giải mới.
+
+
+
+Việc làm của Mohamed Salah đã khiến Fiorentina vô cùng tức giận. Đội bóng Italia thậm chí còn cho biết sẽ kiện Mohamed Salah ra tòa nếu như cầu thủ này tiếp tục từ chối ở lại Artemio Franchi.
+
+“Mohamed Salah, thông qua đại diện của mình, đã từ chối đề nghị hợp đồng mới và mong muốn gia nhập một CLB khác, thậm chí còn không trả lời giấy triệu tập đã được gửi đi”, một thông báo trên trang chủ của Fiorentina. 
+
+“Luật sự của chúng tôi sẽ chính thức vào cuộc để đánh giá lại vụ việc nhằm bảo vệ tối đa quyền lợi của Fiorentina”.
+
+Trước thông tin Fiorentina sẽ kiện, người đại diện của Mohamed Salah là Ramy Abbas cho rằng thân chủ của mình không làm điều gì sai trái, đồng thời giữ nguyên quyết định sẽ ra đi.
+
+Mohamed Salah gia nhập Fiorentina trong kỳ chuyển nhượng mùa Đông 2015 sau khi không tìm được một suất đá chính tại Chelsea. 
+
+Tại đây, Salah thi đấu khá ổn với 6 bàn thắng cùng 3 đường kiến tạo sau 16 trận tại Serie A. Chính việc chơi nổi bật trong màu áo Fiorentina đã giúp Salah được nhiều đội bóng để ý.  ',
+         user_id: '1'
+       },
+        {
+          title: 'Barca xác nhận chiêu mộ sao Atletico Madrid!',
+        post_picture: File.open(File.join(Rails.root.join('app/assets/images/seed/postdata'), 'post5.jpg')),
+        description:'Theo xác nhận của Chủ tịch Josep Maria Bartomeu, Barca đang lên kế hoạch chiêu mộ tiền vệ Arda Turan của Atletico Madrid.
+Vì nhiều lý do khác nhau, Arda Turan đã xác nhận chia tay Atletico Madrid trong phiên chợ Hè năm nay. Tờ Sport khẳng định tiền vệ người Thổ Nhĩ Kì đã đặt bút kí giao kèo có hợp đồng 5 năm với Barca. Ngay sau đó, Turan phủ nhận thông tin này trên mạng xã hội Twitter  ',
+         body: 'Chưa rõ thực hư của thương vụ này ra sao, chỉ biết rằng Barca thực sự muốn có chữ kí của Arda Turan. Thông tin này đã được đích thân Chủ tịch Josep Maria Bartomeu xác nhận.
+“Turan là cầu thủ chất lượng. Khả năng và lối chơi của cậu ấy phù hợp với chúng tôi và là điều mà HLV Luis Enrique muốn có ở mùa giải tới. Tôi đã vận động ban lãnh đạo Barca chi ngân sách chiêu mộ cầu thủ này”, ông Bartomeu chia sẻ trên Esport3.
+Chưa rõ ý định của Arda Turan ra sao, chỉ biết rằng tiền vệ này cũng là 1 CĐV của Barca. Chia sẻ trước báo giới, ngôi sao người Thổ Nhĩ Kì cho biết rất hâm mộ Andres Iniesta và thường xuyên theo dõi Barca qua TV khi rảnh rỗi.
+“Thần tượng của tôi ư? Là Emre Belozoglu khi anh ấy chơi bóng ở Galatasaray. Nhưng hiện tại, tôi thần tượng Andres Iniesta. Đó là cầu thủ cùng thế hệ với tôi. Tôi rất ngưỡng mộ anh ta. Khi tôi không có nhiều việc để làm, tôi thường theo dõi Barca thi đấu qua TV. Còn Real Madrid ư? Không! Tôi yêu Atletico và không thể xem họ thi đấu”, Turan chia sẻ.
+Thực tế, Barca cũng đang có ý định chiêu mộ thêm 1 tiền vệ nữa sau khi chia tay Xavi Hernandez. Arda Turan là sự lựa chọn khá phù hợp bởi ngoài lối chơi đa năng, cầu thủ này cũng đã có tới 4 mùa chinh chiến ở La Liga.
+Theo báo giới Tây Ban Nha, Arda Turan cũng đang nhận được khá nhiều lời mời hấp dẫn từ phía các đội bóng Premier League, trong đó có Chelsea, Man Utd và Arsenal.',
+         user_id: '1'
+       },
+       {
+          title: 'Inter chính thức đón hàng “xịn” từ Barca!',
+        post_picture: File.open(File.join(Rails.root.join('app/assets/images/seed/postdata'), 'post6.jpg')),
+        description:'CLB Barca đã để Montoya chuyển tới đầu quân cho Inter Milan theo dạng cho mượn.
+Đội bóng Italia, Inter Milan vừa hoàn tất việc ký kết hợp đồng 2 năm kèm mức lương 1,5 triệu euro/mùa với hậu vệ Montoya của Barca theo dạng cho mượn.  ',
+         body: 'Được biết, để có được chữ ký từ Montoya, Inter đã phải bỏ ra một khoản tiền khoảng 1,5 triệu euro. Trong khi đó, nếu chấp nhận mua đứt vào năm 2017, Inter sẽ phải chi thêm ít nhất 6 triệu euro.
+
+
+
+"FC Inter vui mừng thông báo rằng Martin Montoya đã gia nhập câu lạc bộ theo một hợp đồng cho mượn từ FC Barcelona. Nerazzurri có một điều khoản để mua đứt cầu thủ này”, trang web chính thức Inter thông báo.
+
+Việc Montoya ra đi là điều đã được dự báo từ trước bởi tại Nou Camp cầu thủ này rất khó cạnh tranh một suất đá chính. Mùa trước, cầu thủ người Tây Ban Nha chỉ có 6 lần có tên trong đội hình xuất phát.
+
+Hiện Montoya có hợp đồng với Barca đến tháng 6/2018. Nên sau hai năm thử sức với Inter, nếu muốn trở lại, hậu vệ này vẫn hoàn toàn có cơ hội.
+
+Montoya là cầu thủ thứ tư gia nhập Inter Hè này. Trước đó đội bóng thành Milan đã đạt được thỏa thuận mua Kondogbia từ Monaco, Miranda từ Atletico và Jeison Murillo từ Granada.',
+         user_id: '1'
+       },
+             {
+          title: 'Sao Arsenal sang Galatasaray kiểm tra y tế!',
+        post_picture: File.open(File.join(Rails.root.join('app/assets/images/seed/postdata'), 'post7.jpg')),
+        description:'Tiền đạo Lukas Podolski đã có mặt ở Istanbul, chuẩn bị làm thủ tục kiểm tra y tế để gia nhập CLB Galatasaray.
+Với khao khát rời Arsenal để tìm cơ hội ra sân thường xuyên, Lukas Podolski không mất quá nhiều thời gian để tìm được tiếng nói chung với Galatasaray. Chỉ sau ít ngày đàm phán, thương vụ này đã đi đến hồi kết. Theo đó, vào hôm qua, tuyển thủ Đức đã đáp chuyến bay sang Istanbul.',
+         body: 'Thông tin trên đã được phía Galatasaray xác nhận. Cụ thể, trong ngày hôm nay (4/7), Polski sẽ làm thủ tục kiểm tra y tế với Galatasaray trước khi kí hợp đồng chính thức với CLB này.
+“Galatasaray đã đạt thỏa thuận chiêu mộ Lukas Podolski sau nhiều cuộc đàm phán chính thức với Arsenal. Vào sáng thứ Bảy, Podolski sẽ tới Istanbul làm thủ tục kiểm tra y tế ở bệnh viện Istanbul Liv. Thông tin chính thức sẽ được đăng tải sớm nhất có thể”, Galatasaray chia sẻ.
+Người đại diện của Podolski, ông Nassim Touihri cho biết HLV Arsene Wenger đã hết lời thuyết phục thân chủ của mình ở lại sân Emirates. Tuy nhiên, Podolski đã từ chối vì không có cơ hội ra sân thường xuyên. Theo thông tin không chính thức, Galatasaray sẽ trả cho Arsenal số tiền là 3,2 triệu euro cho thương vụ này.
+Podolski gia nhập Arsenal từ Cologne vào mùa Hè năm 2012. Kể từ đó tới nay, chân sút người Đức đã có 82 trận cho Pháo thủ trên mọi đấu trường, ghi được 31 bàn thắng.
+Ở mùa giải trước, Polski gần như không còn cơ hội ra sân ở Arsenal sau khi HLV Arsene Wenger chiêu mộ Alexis Sanchez. Anh được Pháo thủ đẩy tới Inter Milan hồi tháng 1 theo bản hợp đồng cho mượn và điều khoản mua đứt vào cuối mùa.
+Tuy vậy, ở Giuseppe Meazza, sau 17 lần ra sân ở Serie A, Polski không để lại dấu ấn đặc biệt nào ngoại trừ 1 bàn thắng. Hệ quả, anh bị trả về Emirates. Polski từng thừa nhận đây là quyết định sai lầm của mình. Sang Galatasaray có thể xem là cơ hội tốt để chân sút người Đức tìm kiếm cơ hội tham dự VCK EURO 2016.',
+         user_id: '1'
+       },
+        {
+          title: 'Man City phá sâu kỷ lục thế giới vì Paul Pogba!',
+        post_picture: File.open(File.join(Rails.root.join('app/assets/images/seed/postdata'), 'post8.jpg')),
+        description:'Theo tờ Telegraph, Man City sẵn sàng chi 100 triệu bảng để chiêu mộ tiền vệ Paul Pogba.
+
+Tới thời điểm này, Man City vẫn “im hơi lặng tiếng”, bất chấp việc họ đã được dỡ bỏ lệnh cấm từ luật Công bằng tài chính. Tuy nhiên, động thái trong thời gian qua cho thấy, “gã nhà giàu” thành Manchester bắt đầu vào cuộc.',
+         body: 'Sau khi bắn tín hiệu ở hai thương vụ lớn là Kevin De Bruyne và Raheem Sterling, Man City còn hứa hẹn sẽ thực hiện “siêu bom tấn” với Paul Pogba. Theo tờ Telegraph, Man “xanh” sẵn sàng vung 100 triệu bảng (140 triệu euro).
+
+Con số này vượt xa lời đề nghị 80 triệu euro của Barcelona mà Juventus vừa từ chối mới đây. Tuy nhiên, theo những chuyên gia, với con số 140 triệu euro, Lão bà sẽ rất khó để lắc đầu với Man City.
+
+Lời đề nghị này cũng vượt sâu kỷ lục thế giới đang thuộc về Gareth Bale, khi chuyển tới Real Madrid với mức phí 100 triệu euro.
+
+Trước khi thực hiện những thương vụ “bom tấn” này, trong ít ngày tới, Man City sẽ đón 2 tân binh, đó là Fabian Delph (từ Aston Villa, 8 triệu bảng) và Enes Ünal (từ Bursaspor, 2 triệu bảng).',
+         user_id: '1'
+       },
+        {
+          title: '
+Tân binh “home-grown” đầu tiên của Man City!',
+        post_picture: File.open(File.join(Rails.root.join('app/assets/images/seed/postdata'), 'post9.jpg')),
+        description:'Fabian Delph nhiều khả năng sẽ trở thành tân binh “home-grown” đầu tiên của Man City trong mùa Hè này.',
+         body: 'Không phải Raheem Sterling, hay Jack Wilshere, tiền vệ đa năng Fabian Delph của Aston Villa nhiều khả năng mới là bản hợp đồng “home-grown” đầu tiên của Man City ở mùa Hè này.
+
+
+
+Theo tờ Goal, nửa xanh thành Manchester đã chắc chắn sở hữu Fabian Delph với giá chỉ 8 triệu bảng. Đây là một khoản chi phí quá rẻ so với tài năng của Fabian.
+
+Fabian, năm nay 25 tuổi, sở hữu nền tảng thể lực bền bỉ và được đánh giá là mẫu tiền vệ cơ động có thể đảm nhiệm nhiều vị trí trên sân. Về khả năng hỗ trợ hàng thủ và phát động phản công, Delph cũng đều làm rất tốt.
+
+Nếu mọi chuyện diễn ra thuận lợi, thương vụ này sẽ được công bố ngay trong tuần này. Fabian Delph dự kiến sẽ ký vào bản hợp đồng dài hạn với Man City, kèm theo mức lương 100.000 bảng/tuần.
+
+Nói thêm một chút về cầu thủ “home-grown” (gọi nôm na là cầu thủ "cây nhà lá vườn"). Theo quy định được đặt ra từ đầu mùa giải 2010/11, trong bản danh sách đăng kí (tối đa 25 cầu thủ) của mỗi CLB Premier League sẽ phải có ít nhất 8 cầu thủ thuộc diện “home-grown”.
+
+Nếu nhìn vào tình hình hiện tại thì Man City chính là CLB bị ảnh hưởng nhiều nhất bởi quy định trên. Mùa trước, Man City đã đáp ứng tốt yêu cầu vì có Frank Lampard, James Milner, Dedryck Boyata, Gael Clichy, John Guidetti, Joe Hart, Scott Sinclair và Richard Wright trong đội hình.
+
+Tuy nhiên, quá nửa số cầu thủ nói trên đã lần lượt nói lời Etihad trong mùa Hè này. Chính bởi vậy, Man City đang ráo riết săn đón những cầu thủ “home-grown” nhằm mục đích thoả mãn quy định trên của FA.',
+         user_id: '1'
+       }
+       ])
+
+
     teams = Team.create([
   {
           name: 'Arsenal',

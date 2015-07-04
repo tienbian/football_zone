@@ -18,7 +18,7 @@
     <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
   <% end %>
 </head>
-
+<%= render 'layouts/header' %>
 <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
 <% end %>

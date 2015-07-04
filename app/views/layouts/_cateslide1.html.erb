@@ -1,13 +1,15 @@
 
 <div class="container">
   <div class="row">
-      <div class="col-md-3">
-          <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Headline</h3>
+      <div class="col-md-4">
+        <%@cate=Category.includes(:posts).find('2')%>
+          <h3>Bình Luận</h3>
             <!-- Carousel
             ================================================== -->
                   
                     <figure class="item active">
-                        <img class="thumbnail" src="http://placehold.it/300x200/" alt="slide1">
+                       <%=image_tag(@cate.posts.last.post_picture_url, :width =>300, :height =>200 ) if @post1.post_picture.present?%><br>
+                      <%=link_to @cate.posts.last.title, post_path(@cate.posts.first)%>
                     </figure>
                     <figure class="item">
                         <img class="thumbnail" src="http://placehold.it/300x200/" alt="slide2">                                   
