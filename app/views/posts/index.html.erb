@@ -1,35 +1,18 @@
 
-<h1>Listing Posts</h1>
+ <p>
+ <%unless current_user.nil? %>
+ <%= link_to 'NEW POST', new_post_path %>
+ <%end%>
+ </p>
+ <br>
 
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Text</th>
-      <th>Body</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.description %></td>
-        <td><%=image_tag(post.post_picture_url, :width => 150) if post.post_picture.present? %></td>
-        <td><%= post.body %></td>
-        <td><%= post.user_id %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+<div id="articles">
+<% for article in @posts %>
+  <h2>
+    <%= link_to h(article.title), article %>
+  </h2>
+  <div class="author" style="color: red">from <%= User.find_by(id: article.user_id).name%> </div>
+  <div class="description"><%= simple_format(article.description) %></div>
+  
+<% end %>
+</div>

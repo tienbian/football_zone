@@ -4,8 +4,13 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+  if params[:format].nil? 
     @posts = Post.all
+    else
+    @category =Category.includes(:posts).find_by_id(params[:format])
+    @posts =@category.posts
 
+  end
   end
 
   # GET /posts/1

@@ -6,7 +6,7 @@
 
 body {
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-    background: #fff no-repeat center center fixed;
+    background: url('soccer_background.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -162,7 +162,7 @@ footer p {
 
     .navbar-default {
         border: none;
-        background: #fff;
+        background: url(app/assets/images/soccer_background.jpg);
         background: rgba(255,255,255,0.9);
     }
 

@@ -1,28 +1,26 @@
 
 <p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+ <%unless current_user.nil? %>
+ <%= link_to 'NEW POST', new_post_path %>
+ <%end%>
+ </p>
+ <br>
 
-<p>
-  <strong>Description:</strong>
-  <%= @post.description %>
-</p>
+<div id="articles">
 
-<p>
- 
-  <td><%=image_tag(@post.post_picture_url, :width => 150) if @post.post_picture.present? %></td>
-</p>
+  <h2>
+    <%=  h(@post.title) %>
+  </h2>
+  <br>
+  
+  <div class="description"><%= simple_format(@post.description) %></div>
+  <%= image_tag(@post.post_picture_url, :width => 500, :height => 400) if @post.post_picture.present? %>
+  <br>
+  <div class="content"><%= simple_format(@post.body) %></div>
+  <div class="author" style="color: red">from <%= User.find_by(id: @post.user_id).name%> </div>
 
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
+</div>
 
-<p>
-  <strong>Author:</strong>
-  <%= User.find_by(id: @post.user_id).email %>
-</p>
 
 <h3>Comments</h3>
 <% @comments.each do |comment| %>

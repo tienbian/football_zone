@@ -1,19 +1,22 @@
- 
-<div class="container">
-  <div class="row">
+<!-- <div class="container">
+  <div class="row"> -->
       <div class="col-md-4">
-          <h3>Chuyển Nhượng</h3>
+        <%@cate=Category.includes(:posts).find('4')%>
+          <h3><%=link_to "Chuyển Nhượng", posts_path(format: '4')%></h3>
             <!-- Carousel
             ================================================== -->
                   
                     <figure class="item active">
-                        <img class="thumbnail" src="http://placehold.it/300x200/" alt="slide1">
+                       <%=image_tag(@cate.posts.last.post_picture_url, :width =>300, :height =>200 )%><br>
+                      <%=link_to @cate.posts.last.title, post_path(@cate.posts.last)%>
                     </figure>
                     <figure class="item">
-                        <img class="thumbnail" src="http://placehold.it/300x200/" alt="slide2">                                   
+                       <%=image_tag(@cate.posts.order('id desc').offset(1).first.post_picture_url, :width =>300, :height =>200 ) %><br>
+                      <%=link_to @cate.posts.order('id desc').offset(1).first.title, post_path(@cate.posts.order('id desc').offset(1).first)%>
                      </figure>  
                     <figure class="item">
-                        <img class="thumbnail" src="http://placehold.it/300x200/" alt="slide3">
+                        <%=image_tag(@cate.posts.order('id desc').offset(2).first.post_picture_url, :width =>300, :height =>200 ) %><br>
+                      <%=link_to @cate.posts.order('id desc').offset(2).first.title, post_path(@cate.posts.order('id desc').offset(2).first)%>
                     </figure>                                                                                   
       
 </div>
