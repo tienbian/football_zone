@@ -1,3 +1,4 @@
+
 <%= link_to 'New Competition', new_competition_path,:class => 'btn btn-primary' %> | 
 <%= link_to 'New Team', new_team_path,:class => 'btn btn-primary' %>
 <table>
@@ -15,8 +16,9 @@
         <td><%= competition.description %></td>
         <td><%= competition.country %></td>
         <h4><%=competition.name%> Table</h4>
-  <table style="width:50%" class="table table-striped">
-  
+      </tr>
+  <table class ="table table-bordered table-striped sortable" width="50%"  >
+  <thead>
   <tr>
     <th>Team</th>
    <!--  <th>Game played</th>
@@ -24,11 +26,14 @@
     <th>Win</th>
     <th>Lose</th> 
     <th>Tie</th>
-    <th>Point</th>
+    <th data-defaultsign="month" data-sortcolumn="1" data-sortkey="1-1">Point</th>
     
   </tr>
-   <%@teams = Team.where(comp_id: competition.id)%>
+  </thead>
+  <tbody>
+  <%@teams = Team.where(comp_id: competition.id)%>
   <%@teams.each do |team|%>
+
   <tr>
     <td><%=image_tag(team.team_picture_url, :width => 20)%> <%=link_to team.name, team%></td>
    <!--  <td><%=38 -   team.not_kick_off%>
@@ -39,13 +44,20 @@
     <td><%=team.wins*3+team.ties%></td>
     
   </tr>
+</tbody>
   <%end%>
 </table>
+<script>
+  (function () {
+            var $table = $('table');
+            $table.on('sorted', function () { console.log("Table was sorted."); });
+        }());
+</script>
 <br>
         <td><%= link_to 'Show', competition ,:class => 'btn btn-primary btn-md'%></td>
         <td><%= link_to 'Edit', edit_competition_path(competition),:class => 'btn btn-primary btn-md' %></td>
         <td><%= link_to 'Destroy', competition, method: :delete, data: { confirm: 'Are you sure?' },:class => 'btn btn-danger btn-md' %></td>
-      </tr>
+     
     <% end %>
   </tbody>
   <br>
@@ -53,4 +65,9 @@
 </table>
 
 <br>
-
+<script>
+  (function () {
+            var $table = $('table');
+            $table.on('sorted', function () { console.log("Table was sorted."); });
+        }());
+</script>
