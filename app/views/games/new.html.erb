@@ -15,11 +15,11 @@
 
   <div class="field">
     <%= f.label :home_team_id %><br>
-    <%= f.select :home_team_id, options_for_select(@teams.collect{ |u| [u.name, u.id] }) %>
+    <%= f.select :home_team_id, options_for_select(Team.all.collect{ |u| [u.name, u.id] }) %>
   </div>
   <div class="field">
     <%= f.label :away_team_id %><br>
-    <%= f.select :away_team_id, options_for_select(@teams.collect{ |u| [u.name, u.id] }), {}, {:class=>'roundUpsize'}%>
+    <%= f.select :away_team_id, options_for_select(Team.all.collect{ |u| [u.name, u.id] }), {}, {:class=>'roundUpsize'}%>
   </div>
   <div class="field">
     <%= f.label :home_team_score %><br>
