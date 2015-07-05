@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label "Competition" %><br>
-    <%= f.select :comp_id, options_for_select(@competitions.collect{ |u| [u.name, u.id] }) %>
+    <%= f.select :comp_id, options_for_select(Competition.all.collect{ |u| [u.name, u.id] }) %>
   </div>
   <br>
   <div class="actions">

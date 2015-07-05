@@ -4,6 +4,12 @@ class Team < ActiveRecord::Base
   belongs_to :competition
   has_many :home_games, class_name: 'Game', foreign_key: 'home_team_id'
   has_many :away_games, class_name: 'Game', foreign_key: 'away_team_id'
+  validates :name, presence: true,
+                     length: { minimum: 5 }
+  validates :description, presence: true,
+                    length: { minimum: 5 }
+  validates :team_picture, presence: true
+                   
   def games_played
     self.home_games.to_a.concat(self.away_games.to_a)
   end

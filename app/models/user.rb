@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :posts
   belongs_to :role
-  validates_presence_of :name
+  validates_presence_of :name,:email,:password
+
   before_save :assign_role
   
   

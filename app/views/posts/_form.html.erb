@@ -1,16 +1,17 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
+<%= form_for @post do |f| %>
+<% if @post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
+      <h2>
+        <%= pluralize(@post.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
       <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -28,10 +29,10 @@
     <%= f.text_area :body %>
   </div>
   <p> 
-    <%= fields_for (@category_post) do |ab|%>
+    <%= fields_for (@post.category_posts.build) do |ab|%>
     <div class = "field">
       <%=ab.label "CATEGORY"%><br>
-      <%= collection_check_boxes(:category , :id, @all_category, :id, :name, {}, {:multiple => true})%>
+      <%= collection_check_boxes(:category , :id, Category.all, :id, :name, {}, {:multiple => true})%>
     </div>
     <%end%>
   </p>
