@@ -2,6 +2,14 @@
 <br>
 
 <%= link_to 'New Player', new_player_path %>
+<span>
+  <%= form_tag players_path, method: 'get', class: 'navbar-form pull-right', role: 'search' do %>
+    <div class="input-group">
+      <%= text_field_tag :search, params[:search], size: 30, placeholder: "PlayerSearch", class: "form-control"%>
+    </div>
+    <%= submit_tag 'Search', class: 'btn btn-success' %>
+  <% end %> 
+</span>
 <br>
 <% @players.in_groups_of(3) do |group| %>
   <div class="row">
@@ -17,3 +25,4 @@
     <% end %>
   </div>
 <% end %>
+<%=paginate @players%>
