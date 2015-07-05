@@ -5,7 +5,7 @@ table th{
 </style>
 <br>
 
-<%= link_to 'New Game', new_game_path %>
+<%= link_to 'New Game', new_game_path,:class => 'btn btn-primary btn-md' %>
 
 <h2 class='tableHeader'>Games of League</h2>
 
@@ -13,6 +13,7 @@ table th{
   <thead>
     <tr>
       <th>Date</th>
+      <th>     </th>
       <th >Game</th>
       <th class='hidden'>Result</th>
     </tr>
@@ -22,6 +23,7 @@ table th{
     <% @games.order("date asc").each do |game| %>
       <tr>  
         <td><%= game.date %></td>
+        <td>---------</td>
         <td><%= game.home_team.name %>
           (
           <% if game.home_team_score == -1 %>
@@ -40,9 +42,9 @@ table th{
           )</td>
                  
         <td class='hidden'><%= game.result(@team_name) %></td>
-        <td><%= link_to 'Show', game %></td>
-        <td><%= link_to 'Edit', edit_game_path(game) %></td>
-        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', game ,:class => 'btn btn-primary btn-md'%></td>
+        <td><%= link_to 'Edit', edit_game_path(game),:class => 'btn btn-primary btn-md' %></td>
+        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-danger btn-md'%></td>
       </tr>
     <% end %>
   </tbody>

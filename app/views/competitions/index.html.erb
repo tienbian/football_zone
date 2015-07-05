@@ -1,5 +1,5 @@
-<%= link_to 'New Competition', new_competition_path %>
-
+<%= link_to 'New Competition', new_competition_path,:class => 'btn btn-primary' %> | 
+<%= link_to 'New Team', new_team_path,:class => 'btn btn-primary' %>
 <table>
   <thead>
     <tr>
@@ -19,8 +19,8 @@
   
   <tr>
     <th>Team</th>
-    <th>Game played</th>
-    <th>Game remaining</th>
+   <!--  <th>Game played</th>
+    <th>Game remaining</th> -->
     <th>Win</th>
     <th>Lose</th> 
     <th>Tie</th>
@@ -31,8 +31,8 @@
   <%@teams.each do |team|%>
   <tr>
     <td><%=image_tag(team.team_picture_url, :width => 20)%> <%=link_to team.name, team%></td>
-    <td><%=38 -   team.not_kick_off%>
-    <td><%=team.not_kick_off%>
+   <!--  <td><%=38 -   team.not_kick_off%>
+    <td><%=team.not_kick_off%> -->
     <td><%=team.wins%></td>
     <td><%=team.losses%></td> 
     <td><%=team.ties%></td>
@@ -42,12 +42,13 @@
   <%end%>
 </table>
 <br>
-        <td><%= link_to 'Show', competition %></td>
-        <td><%= link_to 'Edit', edit_competition_path(competition) %></td>
-        <td><%= link_to 'Destroy', competition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', competition ,:class => 'btn btn-primary btn-md'%></td>
+        <td><%= link_to 'Edit', edit_competition_path(competition),:class => 'btn btn-primary btn-md' %></td>
+        <td><%= link_to 'Destroy', competition, method: :delete, data: { confirm: 'Are you sure?' },:class => 'btn btn-danger btn-md' %></td>
       </tr>
     <% end %>
   </tbody>
+  <br>
   <%= paginate @competitions %>
 </table>
 

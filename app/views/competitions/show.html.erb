@@ -17,8 +17,8 @@
   
   <tr>
     <th>Team</th>
-    <th>Game played</th>
-    <th>Game remaining</th>
+    <!-- <th>Game played</th>
+    <th>Game remaining</th> -->
     <th>Win</th>
     <th>Lose</th> 
     <th>Tie</th>
@@ -28,8 +28,8 @@
   <%@teams.each do |team|%>
   <tr>
     <td><%=image_tag(team.team_picture_url, :width => 20)%> <%=link_to team.name, team%></td>
-    <td><%=38 -   team.not_kick_off%>
-    <td><%=team.not_kick_off%>
+   <!--  <td><%=38 -   team.not_kick_off%>
+    <td><%=team.not_kick_off%> -->
     <td><%=team.wins%></td>
     <td><%=team.losses%></td> 
     <td><%=team.ties%></td>
@@ -55,5 +55,5 @@
   <%end%>
 </p>
 
-<%= link_to 'Edit', edit_competition_path(@competition) %> |
-<%= link_to 'Back', competitions_path %>
+<%= link_to 'Edit', edit_competition_path(@competition),:class => 'btn btn-primary btn-md' %> |
+<%= link_to 'Back', competitions_path ,:class => 'btn btn-primary btn-md'%>

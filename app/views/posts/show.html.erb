@@ -1,7 +1,7 @@
 
 <p>
  <%unless current_user.nil? %>
- <%= link_to 'NEW POST', new_post_path %>
+ <%= link_to 'NEW POST', new_post_path,:class => 'btn btn-primary' %>
  <%end%>
  </p>
  <br>
@@ -48,6 +48,6 @@
   <p><%= link_to "Please sign in to comment!", new_user_session_path%><p>
 <% end%>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
-<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Edit', edit_post_path(@post),:class => 'btn btn-primary btn-md' %> |
+<%= link_to 'Back', posts_path ,:class => 'btn btn-primary btn-md'%>
+<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-danger btn-md'%>

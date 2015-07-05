@@ -23,7 +23,8 @@
     <%= f.label :country %><br>
     <%=f.select :country, "<option>England</option><option>VietNam</option>".html_safe%>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <br>
+  <div >
+    <%= f.submit nil, :class => 'btn btn-primary'%>
   </div>
 <% end %>
