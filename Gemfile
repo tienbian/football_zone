@@ -46,5 +46,6 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'cancan'
 gem 'cancancan'
+gem 'kaminari'
 end
 

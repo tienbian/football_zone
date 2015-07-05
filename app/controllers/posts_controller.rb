@@ -18,6 +18,7 @@ class PostsController < ApplicationController
      @posts =Post.where("body LIKE '%#{params[:search]}%'")
 
   end
+   @posts = @posts.page(params[:page]).per(4)
   end
 
   # end
