@@ -12,7 +12,219 @@
         country: 'England'
       
       )
-
+    games = Game.create([
+      {
+        home_team_id: '2',
+        away_team_id: '12',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-08'
+      },
+     
+      {
+        home_team_id: '20',
+        away_team_id: '16',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-08'
+      },
+      {
+        home_team_id: '7',
+        away_team_id: '17',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-08'
+      },
+       {
+        home_team_id: '18',
+        away_team_id: '13',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-08'
+      },
+      {
+        home_team_id: '19',
+        away_team_id: '10',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-08'
+      },
+      {
+        home_team_id: '5',
+        away_team_id: '11',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-08'
+      },
+      {
+        home_team_id: '1',
+        away_team_id: '15',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-09'
+      },
+      {
+        home_team_id: '6',
+        away_team_id: '8',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-09'
+      },
+      {
+        home_team_id: '9',
+        away_team_id: '3',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-09'
+      },
+       {
+        home_team_id: '14',
+        away_team_id: '4',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-11'
+      },
+       {
+        home_team_id: '16',
+        away_team_id: '2',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-15'
+      },
+       {
+        home_team_id: '8',
+        away_team_id: '18',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-15'
+      },
+      {
+        home_team_id: '13',
+        away_team_id: '14',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-15'
+      },
+      {
+        home_team_id: '10',
+        away_team_id: '7',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-15'
+      },
+      {
+        home_team_id: '12',
+        away_team_id: '9',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-15'
+      },
+      {
+        home_team_id: '15',
+        away_team_id: '19',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-15'
+      },
+      {
+        home_team_id: '11',
+        away_team_id: '6',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-15'
+      },
+      {
+        home_team_id: '17',
+        away_team_id: '1',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-16'
+      },
+      {
+        home_team_id: '4',
+        away_team_id: '5',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-16'
+      },
+      {
+        home_team_id: '3',
+        away_team_id: '20',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-18'
+      },
+      {
+        home_team_id: '2',
+        away_team_id: '6',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-22'
+      },
+      {
+        home_team_id: '15',
+        away_team_id: '20',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-22'
+      },
+      {
+        home_team_id: '10',
+        away_team_id: '11',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-22'
+      },
+      {
+        home_team_id: '7',
+        away_team_id: '9',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-22'
+      },
+      {
+        home_team_id: '19',
+        away_team_id: '12',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-22'
+      },
+      {
+        home_team_id: '17',
+        away_team_id: '16',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-22'
+      },
+       {
+        home_team_id: '14',
+        away_team_id: '5',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-23'
+      },
+      {
+        home_team_id: '13',
+        away_team_id: '8',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-23'
+      },
+      {
+        home_team_id: '18',
+        away_team_id: '4',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-23'
+      },
+      {
+        home_team_id: '1',
+        away_team_id: '3',
+        home_team_score: '-1',
+        away_team_score: '-1',
+        date: '2015-08-25'
+      }
+      ])
 
 posts = Post.create([
   {
