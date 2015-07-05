@@ -5,6 +5,97 @@
 
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#     seed_file = File.join(Rails.root, 'db', 'seeds.yml')
+# config = YAML::load_file(seed_file)
+# Category.create(config["category_list"])
+# CategoryPost.create(config["categorypost_list"])
+
+roles = Role.create([
+  {
+ name: 'admin',
+  description: 'admingmail.com'
+    },
+    {
+ name: 'author',
+  description: 'ngmail.com'
+    },
+    {
+ name: 'user',
+  description: 'ngmail.com'
+    }
+])
+users = User.create([
+  {
+ name: 'admin',
+ email: 'admin@gmail.com',
+ password: '12345678',
+ role_id: '1'
+    },
+    {
+ name: 'author',
+ email: 'author@gmail.com',
+ password: '12345678',
+ role_id: '2'
+    },
+    {
+ name: 'user',
+ email: 'user@gmail.com',
+ password: '12345678',
+ role_id: '3'
+    }
+])
+  categories = Category.create([
+  {
+   name: 'HOT NEWS' 
+  },
+  {
+     name: 'BÌNH LUẬN'
+  },{
+    name: 'CHIẾN THUẬT'
+  },{
+    name: 'CHUYỂN NHƯỢNG '
+  }
+    ])
+  category_posts = CategoryPost.create([
+{
+  category_id: '2',
+  post_id: '1'
+},
+{
+  category_id: '2',
+  post_id: '2'
+},
+{
+  category_id: '2',
+  post_id: '3'
+},
+{
+  category_id: '3',
+  post_id: '4'
+},
+{
+  category_id: '3',
+  post_id: '5'
+},
+{
+  category_id: '3',
+  post_id: '6'
+},
+{
+  category_id: '4',
+  post_id: '7'
+},
+{
+  category_id: '4',
+  post_id: '8'
+},
+{
+  category_id: '4',
+  post_id: '9'
+}
+    ])
+
+
     competitions = Competition.create(
       
         name: 'Premier League 2015-2016',
