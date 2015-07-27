@@ -30,4 +30,8 @@ class Team < ActiveRecord::Base
     games_played.select{|game| game.winner == 'not_kick_off'}.count
   end
   
+  def score
+    self.wins*3+self.ties 
+    return 'score'
+  end
 end

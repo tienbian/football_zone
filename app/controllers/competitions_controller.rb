@@ -6,6 +6,9 @@ class CompetitionsController < ApplicationController
   def index
     @competitions = Competition.all
     @competitions = Competition.page(params[:page]).per(1)
+    
+   
+
   end
 
   # GET /competitions/1

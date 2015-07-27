@@ -28,4 +28,5 @@ class Game < ActiveRecord::Base
       errors.add(:away_team_id, "must be different from home team")
     end
   end
+
 end

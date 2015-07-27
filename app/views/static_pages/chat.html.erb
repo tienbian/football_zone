@@ -1,0 +1,651 @@
+<input id="query" value = "FAPtivi"type="text"/>
+<button id="search-button">Search</button>
+
+<div id="search-container"></div>
+<div id = "youtube-videos"></div>
+<!-- <iframe id="player" name = "player_name" type="text/html" width="640" height="390"
+  src="http://www.youtube.com/embed/"+ videoId +            
+  frameborder="0"></iframe> -->
+<script>
+  var video_id;
+
+  $( document ).ready(function() {
+    console.log( "ready!" );
+    // var channelId = $('#query').val();
+    loadVideos(5,'AIzaSyA_2C8rHaaC14WDplgKD00_f1ckUZoYrBU',$('#query').val());
+    $("#search-button").bind("click",function(){
+      var channelId = $('#query').val();
+      loadVideos(3,'AIzaSyA_2C8rHaaC14WDplgKD00_f1ckUZoYrBU',$('#query').val());
+    });
+  });
+
+      // $(function() {
+      //        //loadVideos(limit,credencial,channelId)
+        
+      // });
+      // function ssss() {
+      //   var channelId = $('#query').value();
+      //   loadVideos(3,'AIzaSyA_2C8rHaaC14WDplgKD00_f1ckUZoYrBU',channelId);
+      // }
+  function loadVideos(limit,credencial,channelId) {
+    $("#search-container").hide();
+    //Create ajax request to url of youtube api
+    $.ajax({
+      type: "GET",
+      url: "https://www.googleapis.com/youtube/v3/search?key="
+        + credencial 
+        + "&q="+channelId+"&part=snippet,id&type=video&order=date"
+    //het ajax code
+    }).done(function (data) {
+      var lista = "";
+   
+      
+
+        $.each(data.items, function (key, value) {          
+          if (limit > 0 && value.id.kind == "youtube#video") {
+            video_id = value.id.videoId;  
+              lista += '<li>' + '<a style = cursor:pointer onclick="playYT(\''+video_id+'\')">' 
+            + value.snippet.title + '</a>' + '</li>';
+              limit--;                     
+          }          
+        });
+        $("#search-container").html(lista);
+
+          }).fail(function (jqXHR, textStatus) {
+            console.log(jqXHR);
+            //het function textstatus
+            $("#search-container").html('Khong co videos trong chanel!');
+            // het function key, value 
+            }).always(function(){
+               $("#search-container").show();10
+
+        });//  het function data
+  }// het function load video
+     //tao iframe video
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtube-videos', {
+      height: '390',
+      width: '640',
+      videoId: video_id                      
+    });
+  }
+   function playYT(vd_id) {
+    $("#youtube-videos").remove();
+    var sc = "<div id=\"youtube-videos\"></div>"
+    $("#search-container").after(sc);
+    player = new YT.Player('youtube-videos', {
+      height: '390',
+      width: '640',
+      videoId: vd_id                      
+    });
+  }
+        
+  </script>
+   
+     //      <script>
+     //      function makeRequest() {
+     //            var q = $('#query').val();
+     //            var request = gapi.client.youtube.search.list({
+     //                       q: q,
+     //                    part: 'snippet'
+
+                                               
+     //            });
+     //            request.execute(function(response) {
+     //                    var str = JSON.stringify(response.result);
+     //                    var arr = JSON.parse(str);
+     //                    var i;
+     //                    var out = "<table>";
+
+     //                    for(i = 0; i < arr.length; i++) {
+     //                        out += "<tr><td>" +
+     //                        arr.items.[i].id.videoId +
+     //                        "</td><td>" +
+     //                        arr[i].City +
+     //                        "</td><td>" +
+     //                        arr[i].Country +
+     //                        "</td></tr>";
+     //                    }
+     //                    out += "</table>";
+     //                    document.getElementById("search-container").innerHTML = out;
+
+     //                    // if (typeof(data.items[0]) != "undefined") {
+     //                    //    console.log('video exists ' + data.items[0].snippet.title);
+     //                    //  } else {
+     //                    //    console.log('video not exists');
+     //                    // $('#search-container').html('<pre>' + str + '</pre>' +'<br>');
+     //            });
+     //    };
+     //    function googleApiClientReady(){
+     //            gapi.client.setApiKey('AIzaSyA_2C8rHaaC14WDplgKD00_f1ckUZoYrBU');
+     //            gapi.client.load('youtube', 'v3', function() {});
+     //    };
+       
+     // </script>
+      // <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"> </script>
+// <script>
+//       // 2. This code loads the IFrame Player API code asynchronously.
+//       var tag = document.createElement('script');
+
+//       tag.src = "https://www.youtube.com/iframe_api";
+//       var firstScriptTag = document.getElementsByTagName('script')[0];
+//       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+//       // 3. This function creates an <iframe> (and YouTube player)
+//       //    after the API code downloads.
+//       var player;
+//       function onYouTubeIframeAPIReady() {
+//         player = new YT.Player('search-container', {
+//           height: '390',
+//           width: '640',
+//           videoId: 'M7lc1UVf-VE',
+//           events: {
+//             'onReady': onPlayerReady,
+//             'onStateChange': onPlayerStateChange
+//           }
+//         });
+//       }
+
+//       // 4. The API will call this function when the video player is ready.
+//       function onPlayerReady(event) {
+//         event.target.playVideo();
+//       }
+
+//       // 5. The API calls this function when the player's state changes.
+//       //    The function indicates that when playing a video (state=1),
+//       //    the player should play for six seconds and then stop.
+//       var done = false;
+//       function onPlayerStateChange(event) {
+//         if (event.data == YT.PlayerState.PLAYING && !done) {
+//           setTimeout(stopVideo, 6000);
+//           done = true;
+//         }
+//       }
+//       function stopVideo() {
+//         player.stopVideo();
+//       }
+//     </script>
+
+<script src="//cdn.pubnub.com/pubnub.min.js"></script>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+           
+          </div>
+          <div class="navbar-form navbar-left">
+            
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="#">
+                You are <span id="whoami"><span> 
+                
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">Online Users</div>
+        <div class="list-group" id="online-users"></div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">Lobby Chat</div>
+        <ul class="list-group" id="chat-output"></ul>
+        <div class="panel-body">
+          <form id="chat">
+            <div class="input-group">
+              <input type="text" class="form-control" id="chat-input" />
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-default">Send Message</button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <style>
+  body {
+  padding: 10px;
+}
+#chat-output, .private-chat-output {
+  height: 200px;
+  overflow-y: scroll;
+}
+#online-users .list-group-item {
+  cursor: pointer;
+  user-select: none;
+}
+#online-users .list-group-item:hover {
+  text-decoration: underline;
+}
+.modal .panel {
+  margin-bottom: 0px;
+}
+.modal .modal-footer {
+  margin-top: 0px;
+}
+</style>
+<script>
+var pubnub = null;
+var me = null;
+var Users = null;
+
+///21
+var channel = 'chat-24';
+
+var $online_users = $('#online-users');
+var $input = $('#chat-input');
+var $output = $('#chat-output');
+//ham random ten user
+var randomName = function() {
+   
+      return "<%=current_user.email%>"
+     
+};
+//ham random skill
+// var randomSkill = function() {
+//   return Math.floor(Math.random() * 3) + 1;
+// };
+
+var User_factory = function() {
+
+  var user_list = {};
+  var self = this;
+
+  self.remove = function(uuid) {
+    delete user_list[uuid];
+  };
+
+  self.get = function(uuid) {
+    if(user_list.hasOwnProperty(uuid)) {
+      return user_list[uuid];
+    } else {
+      console.error('Trying to retrieve user that is not present.');
+    }
+  };
+
+  self.set = function(uuid, data) {
+    if(!user_list.hasOwnProperty(uuid)) {
+      user_list[uuid] = new User(uuid, data);
+    }
+    return user_list[uuid];
+  };
+  
+  self.all = function() {
+    return user_list;
+  }
+
+};
+  
+var User = function(uuid) {
+
+  var self = this;
+
+  self.uuid = uuid || randomName();
+  // self.state = state || {skill: randomSkill()};
+
+  var $tpl = $('\
+    <li id="' + self.uuid + '" class="list-group-item"> \
+    <span class="badge"></span> \
+    ' + self.uuid + ' \
+    </li>');
+
+  self.chat = function(text, $target) {
+
+    var $line = $('<li class="list-group-item"><strong>' + self.uuid + ':</strong> </span>');
+    var $message = $('<span class="text" />').text(text).html();
+
+    $line.append($message);
+    $target.append($line);
+
+    $target.scrollTop($target[0].scrollHeight);
+
+  };
+
+  self.leave = function() {
+    $tpl.remove();
+  };
+
+  self.init = function() {  
+
+    $tpl.click(function() {
+      me.private_chat(self);
+      return false;
+    });
+    
+    $('#online-users').append($tpl);
+
+  };
+
+  return self;
+
+};
+
+var Client = function() {
+  
+  var self = new User(randomName());
+  
+  // self.on_request = function(caller) {
+
+  //   var response = confirm(caller.uuid + ' is challenging you to a match! Press OK to accept or Cancel to deny.');
+
+  //   pubnub.publish({
+  //     channel: channel,
+  //     message: {
+  //       type: 'challenge',
+  //       payload: {
+  //         action: 'response',
+  //         accepted: response,
+  //         uuid: self.uuid,
+  //         target: caller.uuid
+  //       }
+  //     },
+  //     callback: function(){
+  //       alert('Your response has been sent.');
+  //     }
+  //   });
+  // };
+  
+  // self.on_response = function(caller, accepted) {
+  //   if(accepted) {
+  //     alert(caller.uuid + ' has accepted your challenge!');
+  //   } else {
+  //     alert(caller.uuid + ' has rejected your challenge!');
+  //   }
+  // };
+  
+  self.private_chat = function(target) {
+    
+    // open a modal for ourselves
+  new PrivateChat(target);
+
+    // tell the other user to open the modal too
+    pubnub.publish({
+      channel: channel,
+      message: {
+        type: 'new-private-chat',
+        payload: {
+          uuid: self.uuid,
+          target: target.uuid
+        }
+      }
+    });
+    
+  };
+  
+  Users.set(self.uuid);
+  
+  return self;
+  
+};
+
+var PrivateChat = function(user) {
+  
+  var self = this;
+  
+  var $tpl = $('\
+    <div class="modal fade"> \
+      <div class="modal-dialog"> \
+        <div class="modal-content"> \
+          <div class="modal-header"> \
+            <button type="button" class="close" data-dismiss="modal">&times;</button> \
+            <h4 class="modal-title">' + user.uuid + ' <span class="badge"></span></h4> \
+          </div> \
+          <div class="modal-body"> \
+            <div class="panel panel-default"> \
+              <div class="panel-heading">Private Chat</div> \
+              <ul class="list-group private-chat-output"></ul> \
+              <div class="panel-body"> \
+                <form class="private-chat"> \
+                  <div class="input-group"> \
+                    <input type="text" class="form-control private-chat-input" /> \
+                    <span class="input-group-btn"> \
+                      <button type="submit" class="btn btn-default">Send Message</button> \
+                    </span> \
+                  </div> \
+                </form> \
+              </div> \
+            </div> \
+          </div> \
+          <div class="modal-footer"> \
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> \
+            \
+          </div> \
+        </div> \
+      </div> \
+    </div>');
+  
+  var $chat_form = $tpl.find('.private-chat');
+  var $output = $tpl.find('.private-chat-output');
+  var $input = $tpl.find('.private-chat-input');
+  var $challenge = $tpl.find('.challenge-user');
+  
+  private_channel = channel + ':' + [me.uuid, user.uuid].sort().join(':');
+  
+  self.hide = function(callback) {
+    $tpl.on('shown.bs.modal', callback);
+    $tpl.modal('hide');
+  };
+  
+  self.show = function(callback) {
+    $tpl.on('hidden.bs.modal', callback);
+    $tpl.modal('show');
+  };
+  
+  var init = function() {
+          
+    pubnub.grant({
+      channel: private_channel,
+      auth_key: me.uuid,
+      read: true,
+      write: true,
+      ttl: 0,
+      callback: function() {
+        
+        $('body').append($tpl);
+
+        pubnub.subscribe({
+          channel: private_channel,
+          message: function(data) {   
+            Users.get(data.payload.uuid).chat(data.payload.text, $output);
+
+          }
+        });
+
+        $chat_form.submit(function() {
+          pubnub.publish({
+            channel: private_channel,
+            message: {
+              type: 'private-chat',
+              payload: {
+                text: $input.val(),
+                uuid: me.uuid
+              }
+            }
+          });
+
+          $input.val('');
+
+          return false;
+
+        });
+
+        // $challenge.click(function(){
+
+        //   pubnub.publish({
+        //     channel: channel,
+        //     message: {
+        //       type: 'challenge',
+        //       payload: {
+        //         action: 'request',
+        //         uuid: me.uuid,
+        //         target: user.uuid
+        //       }
+        //     }
+        //   });
+
+        //   alert('Challenging ' + user.uuid + '...');
+
+        // });
+
+        self.show();
+    
+      }
+    });
+    
+  };
+  
+  init();
+  
+  return self;
+  
+};
+
+var App = function() {
+  
+  Users = new User_factory();
+  me = new Client();
+
+  pubnub = PUBNUB.init({
+    publish_key: 'pub-c-abdc8a98-0eb6-4c3a-b217-d8cbe93e15c1',
+    subscribe_key: 'sub-c-6b247b50-26b0-11e5-99ee-0619f8945a4f',
+    secret_key: 'sec-c-MzYwYzRkMmQtMzA0Zi00MWE3LTk1YjUtN2UxNDQ0OWM5Y2Rh',
+    uuid: me.uuid,
+    auth_key: me.uuid
+  });
+  
+  pubnub.grant({
+    channel: channel,
+    auth_key: me.uuid,
+    read: true,
+    write: true,
+    ttl: 0,
+    callback: function() {
+      
+      pubnub.grant({
+        channel: channel + '-pnpres',
+        auth_key: me.uuid,
+        read: true,
+        write: true,
+        ttl: 0,
+        callback: function() {
+
+          pubnub.subscribe({
+            channel: channel,
+            // state: me.state,
+            message: function(data) {
+
+              if(data.type == 'chat') {    
+                Users.get(data.payload.uuid).chat(data.payload.text, $output);
+              }
+
+              if(data.payload.target == me.uuid) {    
+
+                if(data.type == 'new-private-chat') {
+
+                  new PrivateChat(Users.get(data.payload.uuid));
+
+                } 
+
+                // if(data.type == 'challenge') {
+
+                //   var challenger = Users.get(data.payload.uuid);
+
+                //   if(data.payload.action == 'request') {
+                //     me.on_request(challenger);
+                //   }
+
+                //   if(data.payload.action == 'response') {
+                //     me.on_response(challenger, data.payload.accepted);
+                //   }
+
+                // }
+
+              }
+
+            }, 
+            presence: function(data) {
+
+              console.log(data);
+
+              if(data.action == "join") {
+                Users.set(data.uuid).init();
+              }
+
+              if(data.action == "leave" || data.action == "timeout") {
+                Users.remove(data.uuid);
+              }
+
+            }
+          });
+
+          // $('#find-match').click(function(){
+
+          //   var matches = [];
+          //   var users = Users.all();
+
+          //   for(var uuid in users) {
+          //     if(uuid !== me.uuid && users[uuid].state.skill == me.state.skill) {
+          //       matches.push(users[uuid]);
+          //     }
+          //   }
+
+          //   if(!matches.length) {
+          //     alert('Nobody is online with the same skill level.');
+          //   } else {
+          //     var opponent = matches[Math.floor(Math.random() * matches.length)];
+          //     alert('Opponent Found: ' + opponent.uuid + ' with skill level ' + opponent.state.skill);
+          //   }
+
+          // });
+
+          $('#chat').submit(function() {
+
+            pubnub.publish({
+              channel: channel,
+              message: {
+                type: 'chat',
+                payload: {
+                  text: $input.val(),
+                  uuid: me.uuid
+                }
+              }
+            });
+
+            $input.val('');
+
+            return false;
+
+          });
+
+          $('#whoami').text(me.uuid);
+          // $('#my_skill').text(me.state.skill);
+
+        }
+      });
+    }
+  });
+}
+
+App();
+</script>
+ 

@@ -16,18 +16,20 @@
         <td><%= competition.description %></td>
         <td><%= competition.country %></td>
         <h4><%=competition.name%> Table</h4>
+    
       </tr>
-  <table class ="table table-bordered table-striped sortable" width="50%"  >
+
+  <table class ="table table-bordered table-striped " width="50%"  >
   <thead>
   <tr>
-    <th>Team</th>
+    <th><Team Name%></th>
    <!--  <th>Game played</th>
     <th>Game remaining</th> -->
     <th>Win</th>
     <th>Lose</th> 
     <th>Tie</th>
-    <th data-defaultsign="month" data-sortcolumn="1" data-sortkey="1-1">Point</th>
-    
+    <th>Score</th>
+
   </tr>
   </thead>
   <tbody>
@@ -41,18 +43,14 @@
     <td><%=team.wins%></td>
     <td><%=team.losses%></td> 
     <td><%=team.ties%></td>
-    <td><%=team.wins*3+team.ties%></td>
+    <td><%=team.score%></td>
     
   </tr>
+
 </tbody>
   <%end%>
 </table>
-<script>
-  (function () {
-            var $table = $('table');
-            $table.on('sorted', function () { console.log("Table was sorted."); });
-        }());
-</script>
+
 <br>
         <td><%= link_to 'Show', competition ,:class => 'btn btn-primary btn-md'%></td>
         <td><%= link_to 'Edit', edit_competition_path(competition),:class => 'btn btn-primary btn-md' %></td>
@@ -65,9 +63,4 @@
 </table>
 
 <br>
-<script>
-  (function () {
-            var $table = $('table');
-            $table.on('sorted', function () { console.log("Table was sorted."); });
-        }());
-</script>
+
