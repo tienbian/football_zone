@@ -1,21 +1,59 @@
+<!-- <div id="link">My video</div>
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <iframe width="400" height="300" frameborder="0" allowfullscreen=""></iframe>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+// <script>
+//     $('#link').click(function () {
+//         var src = 'http://www.youtube.com/v/FSi2fJALDyQ&amp;autoplay=1';
+//         $('#myModal').modal('show');
+//         $('#myModal iframe').attr('src', src);
+//     });
+
+//     $('#myModal button').click(function () {
+//         $('#myModal iframe').removeAttr('src');
+//     });
+// </script>
+
+
+
+
+
 <input id="query" value = "FAPtivi"type="text"/>
 <button id="search-button">Search</button>
 
 <div id="search-container"></div>
 <div id = "youtube-videos"></div>
+<br>
+<p id = "video-desc"></p>
+<div id = "video-count"></div>
+<div id = "video-com"></div>
 <!-- <iframe id="player" name = "player_name" type="text/html" width="640" height="390"
   src="http://www.youtube.com/embed/"+ videoId +            
   frameborder="0"></iframe> -->
 <script>
   var video_id;
-
+  // var val_des;
+  
   $( document ).ready(function() {
     console.log( "ready!" );
     // var channelId = $('#query').val();
     loadVideos(5,'AIzaSyA_2C8rHaaC14WDplgKD00_f1ckUZoYrBU',$('#query').val());
     $("#search-button").bind("click",function(){
       var channelId = $('#query').val();
-      loadVideos(3,'AIzaSyA_2C8rHaaC14WDplgKD00_f1ckUZoYrBU',$('#query').val());
+      loadVideos(5,'AIzaSyA_2C8rHaaC14WDplgKD00_f1ckUZoYrBU',$('#query').val());
+      
     });
   });
 
@@ -38,26 +76,40 @@
     //het ajax code
     }).done(function (data) {
       var lista = "";
-   
+      
       
 
         $.each(data.items, function (key, value) {          
+          
           if (limit > 0 && value.id.kind == "youtube#video") {
-            video_id = value.id.videoId;  
-              lista += '<li>' + '<a style = cursor:pointer onclick="playYT(\''+video_id+'\')">' 
-            + value.snippet.title + '</a>' + '</li>';
-              limit--;                     
-          }          
-        });
-        $("#search-container").html(lista);
+              
+            val_des = value.snippet.description;  
 
+              lista += '<li>' + '<a style = cursor:pointer onclick="playYT(\''+value.id.videoId+'\');desc(\''+val_des+'\');viewscount(\''+value.id.videoId+'\');comment(\''+value.id.videoId+'\')" >' 
+            + value.snippet.title + '</a>' + '</li>';
+            video_id = value.id.videoId;
+              limit--;               
+          }          
+          
+        });
+        var listb = "";
+        listb = '<p>' + val_des + '</p>';   
+        $("#video-desc").html(listb);
+
+        
+
+        $("#search-container").html(lista);
+//load view + like + dislike video dau tien        
+        viewscount(video_id);
+//load comment video
+        comment(video_id);
           }).fail(function (jqXHR, textStatus) {
             console.log(jqXHR);
             //het function textstatus
             $("#search-container").html('Khong co videos trong chanel!');
             // het function key, value 
             }).always(function(){
-               $("#search-container").show();10
+               $("#search-container").show();
 
         });//  het function data
   }// het function load video
@@ -67,6 +119,7 @@
   var firstScriptTag = document.getElementsByTagName('script')[0];
   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
   var player;
+
   function onYouTubeIframeAPIReady() {
     player = new YT.Player('youtube-videos', {
       height: '390',
@@ -84,7 +137,64 @@
       videoId: vd_id                      
     });
   }
+  function desc(val_d){
+     var listb = "";
+        listb = '<p>' + val_d+ '</p>';
         
+        $("#video-desc").html(listb);
+  }
+//hien thi views
+  function viewscount(vc){
+    $("#video-count").hide();
+    $.ajax({
+      type: "GET",
+      url: "https://www.googleapis.com/youtube/v3/videos?part=contentDetails%2Cstatistics&id="+ vc+"&key=AIzaSyA_2C8rHaaC14WDplgKD00_f1ckUZoYrBU"
+    }).done(function (data) {
+      var list = "";
+     
+      $.each(data.items, function (key, value) {          
+        list = '<p>Views'+" "+ value.statistics.viewCount + '</p>'+'<p>Like'+" "+ value.statistics.likeCount +'<p>Dislike'+" "+ value.statistics.dislikeCount + '</p>';
+ 
+      });
+       
+      $("#video-count").html(list);
+        
+        }).fail(function (jqXHR, textStatus) {
+          console.log(jqXHR);
+          //het function textstatus
+          $("#video-count").html('Khong co videos trong chanel!');
+        // het function key, value 
+      }).always(function(){
+           $("#video-count").show();
+    });//  het function data
+  }
+//hien thi comment
+  function comment(cm){
+    $("#video-com").hide();
+    $.ajax({
+      type: "GET",
+      url: "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId="+cm+"&key=AIzaSyA_2C8rHaaC14WDplgKD00_f1ckUZoYrBU"
+    //het ajax code
+    }).done(function (data) {
+      var list = "";
+     
+      $.each(data.items, function (key, value) {          
+        list += '<a>'+ value.snippet.topLevelComment.snippet.authorDisplayName + '</a>'+"  "+'<span>'+ value.snippet.topLevelComment.snippet.textDisplay + '</span>'+'<br>';
+ 
+      });
+       
+      $("#video-com").html(list);
+        
+        }).fail(function (jqXHR, textStatus) {
+          console.log(jqXHR);
+          //het function textstatus
+          $("#video-com").html('Khong co videos trong chanel!');
+        // het function key, value 
+      }).always(function(){
+           $("#video-com").show();
+    });//  het function data
+  }
+  
   </script>
    
      //      <script>

@@ -49,4 +49,6 @@ gem 'cancancan'
 gem 'kaminari'
 gem 'ransack'
 end
+  gem 'rails_12factor', group: :production
+
 
