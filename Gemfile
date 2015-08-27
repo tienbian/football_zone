@@ -23,6 +23,9 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+  gem 'jquery-ui-rails'
+  gem 'jquery-modal-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -49,6 +52,6 @@ gem 'cancancan'
 gem 'kaminari'
 gem 'ransack'
 end
-  gem 'rails_12factor', group: :production
+  gem 'rails_12factor', group: :production    
 
 

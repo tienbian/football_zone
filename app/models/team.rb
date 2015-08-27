@@ -32,6 +32,6 @@ class Team < ActiveRecord::Base
   
   def score
     self.wins*3+self.ties 
-    return 'score'
+    
   end
 end

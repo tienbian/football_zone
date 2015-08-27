@@ -43,7 +43,7 @@
       <div class="col-md-2">
         <br><br>
 	<tr>
-  <td><%= link_to( image_tag(p.picture_url, :width => 100, :height => 100), player_path(p), :class=>"work") if p.picture.present?%></td><br>
+  <td><%= link_to_modal( image_tag(p.picture_url, :width => 100, :height => 100), player_path(p), :class=>"work") if p.picture.present?%></td><br>
 	<td><%=link_to p.name, player_path(p.id)%></td><br>
 	</tr>
   </div>

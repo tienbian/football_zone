@@ -1,4 +1,16 @@
 
+<script>
+  $(function() {
+    $('table').tablesort().data('tablesort');
+    $('thead th.number').data('sortBy', function(th, td, sorter) {
+      return parseInt(td.text(), 10);
+    });
+  });
+</script>
+
+
+
+
 <%= link_to 'New Competition', new_competition_path,:class => 'btn btn-primary' %> | 
 <%= link_to 'New Team', new_team_path,:class => 'btn btn-primary' %>
 <table>
@@ -19,6 +31,7 @@
     
       </tr>
 
+
   <table class ="table table-bordered table-striped " width="50%"  >
   <thead>
   <tr>
@@ -29,7 +42,7 @@
     <th>Lose</th> 
     <th>Tie</th>
     <th>Score</th>
-
+    
   </tr>
   </thead>
   <tbody>
@@ -51,7 +64,7 @@
   <%end%>
 </table>
 
-<br>
+
         <td><%= link_to 'Show', competition ,:class => 'btn btn-primary btn-md'%></td>
         <td><%= link_to 'Edit', edit_competition_path(competition),:class => 'btn btn-primary btn-md' %></td>
         <td><%= link_to 'Destroy', competition, method: :delete, data: { confirm: 'Are you sure?' },:class => 'btn btn-danger btn-md' %></td>
@@ -61,6 +74,7 @@
   <br>
   <%= paginate @competitions %>
 </table>
+
 
 <br>
 
