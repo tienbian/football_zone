@@ -1,0 +1,39 @@
+<div class="field">
+    <%= @game.home_team.name %><br>
+  
+  </div>
+  <div class="field">
+    <%= @game.away_team.name%><br>
+  
+  </div>
+
+<%= form_for(@bet) do |f| %>
+  <% if @bet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bet.errors.count, "error") %> prohibited this bet from being saved:</h2>
+
+      <ul>
+      <% @bet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div >
+    
+    <%=f.hidden_field :game_id, :value=> @game.id%>
+  </div>  
+
+  <div class="field">
+    <%= f.label :home_team_score %><br>
+    <%= f.number_field :home_team_score %>
+  </div>
+  <div class="field">
+    <%= f.label :away_team_score %><br>
+    <%= f.number_field :away_team_score %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

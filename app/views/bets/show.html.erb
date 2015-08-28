@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Home team score:</strong>
+  <%= @bet.home_team_score %>
+</p>
+
+<p>
+  <strong>Away team score:</strong>
+  <%= @bet.away_team_score %>
+</p>
+
+<%= link_to 'Edit', edit_bet_path(@bet) %> |
+<%= link_to 'Back', bets_path %>

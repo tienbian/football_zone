@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150704025943) do
+ActiveRecord::Schema.define(version: 20150827084751) do
+
+  create_table "bets", force: :cascade do |t|
+    t.integer  "home_team_score", limit: 4
+    t.integer  "away_team_score", limit: 4
+    t.integer  "game_id",         limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
