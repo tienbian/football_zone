@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :bets
   get 'static_pages/chat'
 
 

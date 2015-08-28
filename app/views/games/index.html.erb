@@ -15,7 +15,7 @@ table th{
       <th>Date</th>
       <th>     </th>
       <th >Game</th>
-      <th class='hidden'>Result</th>
+      <th>Result</th>
     </tr>
   </thead>
 
@@ -41,10 +41,11 @@ table th{
           <%end%>
           )</td>
                  
-        <td class='hidden'><%= game.result(@team_name) %></td>
+        <td><%= game.winner %></td>
         <td><%= link_to 'Show', game ,:class => 'btn btn-primary btn-md'%></td>
         <td><%= link_to 'Edit', edit_game_path(game),:class => 'btn btn-primary btn-md' %></td>
         <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-danger btn-md'%></td>
+        <td><%=link_to 'Bet',new_bet_path(game),:class => 'btn btn-primary btn-md' %></td>
       </tr>
     <% end %>
   </tbody>

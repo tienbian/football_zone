@@ -4,6 +4,8 @@ class Game < ActiveRecord::Base
   validates :home_team_score, presence: true
   validates :away_team_score, presence: true
   validate :home_and_away_teams_are_different
+
+  has_one :bet
   def winner
     return home_team.name if home_team_score > away_team_score
     return away_team.name if away_team_score > home_team_score     
